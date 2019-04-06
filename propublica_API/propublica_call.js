@@ -5,6 +5,18 @@ const API_KEY = process.env.Propublica_API_KEY;
 var options = {headers:{"X-API-KEY": API_KEY}};
 var current_congress = 116;
 
+var address = '4010 Charlotte St., Kansas City, MO 64110';
+
+
+console.log(process.env.google_API_Key);
+const google_API_Key = process.env.google_API_Key;
+
+var google_url = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address='+address+'&electionId=2000&key='+google_API_Key;
+
+fetch(google_url, function(error, meta, body){
+    console.log(body.toString());
+});
+
 var state = 'MO';
 
 var district = '5';
@@ -38,13 +50,13 @@ fetch(bill_search_url,options, function(error, meta, body){
 var recent_house_bills_url = 'https://api.propublica.org/congress/v1/'+current_congress+'/house/bills/introduced.json';
 var recent_house_bills;
 fetch(recent_house_bills_url,options, function(error, meta, body){
-    // console.log(body.toString());
-    console.log("Recent House Bills");
+    // // console.log(body.toString());
+    // console.log("Recent House Bills");
     recent_house_bills = JSON.parse(body.toString());
     temp = recent_house_bills.results[0].bills;
-    for(var i = 0; i < temp.length; i++){
-        console.log(temp[i].title);
-    }
+    // for(var i = 0; i < temp.length; i++){
+    //     console.log(temp[i].title);
+    // }
 });
 
 var upcoming_house_bills_url = 'https://api.propublica.org/congress/v1/bills/upcoming/house.json';
@@ -57,13 +69,13 @@ fetch(upcoming_house_bills_url,options, function(error, meta, body){
 var recent_senate_bills_url = 'https://api.propublica.org/congress/v1/'+current_congress+'/senate/bills/introduced.json';
 var recent_senate_bills;
 fetch(recent_senate_bills_url,options, function(error, meta, body){
-    // console.log(body.toString());
-    console.log("Recent Senate Bills");
+    // // console.log(body.toString());
+    // console.log("Recent Senate Bills");
     recent_senate_bills = JSON.parse(body.toString());
     temp = recent_senate_bills.results[0].bills;
-    for(var i = 0; i < temp.length; i++){
-        console.log(temp[i].title);
-    }
+    // for(var i = 0; i < temp.length; i++){
+    //     console.log(temp[i].title);
+    // }
 });
 
 var upcoming_senate_bills_url = 'https://api.propublica.org/congress/v1/bills/upcoming/senate.json';
