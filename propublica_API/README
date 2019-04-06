@@ -1,0 +1,7 @@
+Requirements:
+-Node.js    |       For windows installer visit: https://nodejs.org/dist/v10.15.3/node-v10.15.3-x64.msi
+-node_modules:
+--fetch     |       "npm install fetch"
+
+In windows set the environment variable which is called in 'propublica_call.js' using:
+"set Propublica_API_KEY=<propublica api key>"
