@@ -7,13 +7,13 @@ var current_congress = 116;
 
 var address = '4010 Charlotte St., Kansas City, MO 64110';
 
-
 console.log(process.env.google_API_Key);
 const google_API_Key = process.env.google_API_Key;
 
 var google_url = 'https://www.googleapis.com/civicinfo/v2/voterinfo?address='+address+'&electionId=2000&key='+google_API_Key;
 
 fetch(google_url, function(error, meta, body){
+    // This response contains the user's state code (for their given addresss)
     console.log(body.toString());
 });
 
