@@ -25,7 +25,7 @@ export class ProfileMenu extends React.Component {
     title: 'Profile'.toUpperCase(),
   };
   render = () => (
-    <CategoryMenu navigation={this.props.navigation} items={Routes.NavigationRoutes} />
+    <CategoryMenu navigation={this.props.navigation} items={Routes.ProfileRoutes} />
   );
 }
 
@@ -37,7 +37,7 @@ export class GetInvolvedMenu extends React.Component {
     title: 'Get Involved'.toUpperCase(),
   };
   render = () => (
-    <CategoryMenu navigation={this.props.navigation} items={Routes.SocialRoutes} />
+    <CategoryMenu navigation={this.props.navigation} items={Routes.GetInvolvedRoutes} />
   );
 }
 
@@ -49,7 +49,7 @@ export class CongressMembersMenu extends React.Component {
     title: 'Congress Members'.toUpperCase(),
   };
   render = () => (
-    <CategoryMenu navigation={this.props.navigation} items={Routes.ArticleRoutes} />
+    <CategoryMenu navigation={this.props.navigation} items={Routes.CongressMembersRoutes} />
   );
 }
 
@@ -61,7 +61,7 @@ export class LegislationMenu extends React.Component {
     title: 'Legislation'.toUpperCase(),
   };
   render = () => (
-    <CategoryMenu navigation={this.props.navigation} items={Routes.MessagingRoutes} />
+    <CategoryMenu navigation={this.props.navigation} items={Routes.LegislationRoutes} />
   );
 }
 
@@ -73,6 +73,6 @@ export class PollsMenu extends React.Component {
     title: 'Polls'.toUpperCase(),
   };
   render = () => (
-    <CategoryMenu navigation={this.props.navigation} items={Routes.DashboardRoutes} />
+    <CategoryMenu navigation={this.props.navigation} items={Routes.PollsRoutes} />
   );
 }
