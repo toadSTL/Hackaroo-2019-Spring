@@ -1,8 +1,8 @@
 import { scale } from '../utils/scale';
 
 const Colors = {
-  accent: '#ff2824',
-  primary: '#f64e59',
+  accent: '#028090',
+  primary: '#05668d',
   success: '#3bd555',
   disabled: '#cacaca',
 
@@ -66,7 +66,7 @@ const Fonts = {
   light: 'Roboto-Light',
   regular: 'Roboto-Regular',
   bold: 'Roboto-Medium',
-  logo: 'Righteous-Regular',
+  logo: 'Roboto-Bold',
 };
 
 const FontBaseValue = scale(18);
