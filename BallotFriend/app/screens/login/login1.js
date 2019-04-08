@@ -4,6 +4,7 @@ import {
   Image,
   Dimensions,
   Keyboard,
+  Alert,
 } from 'react-native';
 import {
   RkButton,
@@ -17,8 +18,16 @@ import { FontAwesome } from '../../assets/icons';
 import { GradientButton } from '../../components/gradientButton';
 import { scaleModerate, scaleVertical } from '../../utils/scale';
 import NavigationType from '../../config/navigation/propTypes';
+import { auth } from '../../services/auth';
 
 export class LoginV1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
   static propTypes = {
     navigation: NavigationType.isRequired,
   };
@@ -46,7 +55,13 @@ export class LoginV1 extends React.Component {
   };
 
   onLoginButtonPressed = () => {
-    this.props.navigation.navigate('');
+    auth.signInWithEmailAndPassword(
+      this.state.email,
+      this.state.password,
+    ).catch((e) => {
+      Alert.alert(e.message);
+    });
+    this.props.navigation.goBack();
   };
 
   onSignUpButtonPressed = () => {
@@ -71,8 +86,8 @@ export class LoginV1 extends React.Component {
             <RkText rkType='awesome hero accentColor'>{FontAwesome.facebook}</RkText>
           </RkButton>
         </View>
-        <RkTextInput rkType='rounded' placeholder='Username' />
-        <RkTextInput rkType='rounded' placeholder='Password' secureTextEntry />
+        <RkTextInput rkType='rounded' value={this.state.email} onChangeText={email => this.setState({ email })} placeholder='Username' />
+        <RkTextInput rkType='rounded' value={this.state.password} onChangeText={password => this.setState({ password })} placeholder='Password' secureTextEntry />
         <GradientButton
           style={styles.save}
           rkType='large'
