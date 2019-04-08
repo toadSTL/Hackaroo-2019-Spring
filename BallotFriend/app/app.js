@@ -35,10 +35,6 @@ const BallotFriendApp = createStackNavigator({
       },
     ),
   },
-  Registration: { screen: Screens.SignUp },
-  GetInvolved: { screen: Screens.Articles1 },
-  Members: { screen: Screens.Articles1 },
-  Legislation: { screen: Screens.Articles1 },
 }, {
   headerMode: 'none',
 });

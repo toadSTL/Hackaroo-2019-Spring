@@ -4,6 +4,7 @@ import {
   Image,
   Dimensions,
   Keyboard,
+  Alert,
 } from 'react-native';
 import {
   RkButton,
@@ -17,8 +18,20 @@ import { FontAwesome } from '../../assets/icons';
 import { GradientButton } from '../../components/gradientButton';
 import { scaleModerate, scaleVertical } from '../../utils/scale';
 import NavigationType from '../../config/navigation/propTypes';
+// Working on abstracting authentication with an auth service
+// import { AuthService } from '../../services/auth/auth';
+import { auth } from '../../services/firebase_test';
 
 export class LoginV1 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+    this.m = '';
+  }
+
   static propTypes = {
     navigation: NavigationType.isRequired,
   };
@@ -46,7 +59,18 @@ export class LoginV1 extends React.Component {
   };
 
   onLoginButtonPressed = () => {
-    this.props.navigation.navigate('');
+    auth.signInWithEmailAndPassword(
+      this.state.email,
+      this.state.password,
+    ).catch((e) => {
+      this.m = e.message;
+      // Alert.alert(e.message);
+    });
+
+    // Alert.alert(this.loggedIn);
+    // if (this.loggedIn) {
+    //   Alert.alert('Login sucessful!');// this.props.navigation.navigate('');
+    // } else { Alert.alert('Failed to login. Try again'); }
   };
 
   onSignUpButtonPressed = () => {
@@ -71,8 +95,8 @@ export class LoginV1 extends React.Component {
             <RkText rkType='awesome hero accentColor'>{FontAwesome.facebook}</RkText>
           </RkButton>
         </View>
-        <RkTextInput rkType='rounded' placeholder='Username' />
-        <RkTextInput rkType='rounded' placeholder='Password' secureTextEntry />
+        <RkTextInput rkType='rounded' value={this.state.email} onChangeText={email => this.setState({ email })} placeholder='Username' />
+        <RkTextInput rkType='rounded' value={this.state.password} onChangeText={password => this.setState({ password })} placeholder='Password' secureTextEntry />
         <GradientButton
           style={styles.save}
           rkType='large'

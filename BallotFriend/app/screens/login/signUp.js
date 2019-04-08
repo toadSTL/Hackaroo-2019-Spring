@@ -3,6 +3,7 @@ import {
   View,
   Image,
   Keyboard,
+  Alert,
 } from 'react-native';
 import {
   RkButton,
@@ -15,8 +16,16 @@ import {
 import { GradientButton } from '../../components/';
 import { scaleVertical } from '../../utils/scale';
 import NavigationType from '../../config/navigation/propTypes';
+import { auth } from '../../services/firebase_test';
 
 export class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+    };
+  }
   static navigationOptions = {
     header: null,
   };
@@ -34,6 +43,10 @@ export class SignUp extends React.Component {
   );
 
   onSignUpButtonPressed = () => {
+    // Alert.alert(this.state.email);
+    auth.createUserWithEmailAndPassword(this.state.email, this.state.password).catch((e) => {
+      Alert.alert(e);
+    });
     this.props.navigation.goBack();
   };
 
@@ -53,8 +66,8 @@ export class SignUp extends React.Component {
       <View style={styles.content}>
         <View>
           <RkTextInput rkType='rounded' placeholder='Name' />
-          <RkTextInput rkType='rounded' placeholder='Email' />
-          <RkTextInput rkType='rounded' placeholder='Password' secureTextEntry />
+          <RkTextInput rkType='rounded' value={this.state.email} onChangeText={email => this.setState({ email })} placeholder='Email' />
+          <RkTextInput rkType='rounded' value={this.state.password} onChangeText={password => this.setState({ password })} placeholder='Password' secureTextEntry />
           <RkTextInput rkType='rounded' placeholder='Confirm Password' secureTextEntry />
           <GradientButton
             style={styles.save}
