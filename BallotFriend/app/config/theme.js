@@ -1,8 +1,8 @@
 import { scale } from '../utils/scale';
 
 const Colors = {
-  accent: '#ff2824',
-  primary: '#f64e59',
+  accent: '#028090',
+  primary: '#05668d',
   success: '#3bd555',
   disabled: '#cacaca',
 
@@ -25,8 +25,8 @@ const Colors = {
   google: '#e94335',
   facebook: '#3b5998',
 
-  gradientBaseBegin: '#ff9147',
-  gradientBaseEnd: '#ff524c',
+  gradientBaseBegin: '#00a896',
+  gradientBaseEnd: '#05668d',
   gradientVisaBegin: '#63e2ff',
   gradientVisaEnd: '#712ec3',
   gradientMasterBegin: '#febb5b',
@@ -66,7 +66,7 @@ const Fonts = {
   light: 'Roboto-Light',
   regular: 'Roboto-Regular',
   bold: 'Roboto-Medium',
-  logo: 'Righteous-Regular',
+  logo: 'Roboto-Bold',
 };
 
 const FontBaseValue = scale(18);
